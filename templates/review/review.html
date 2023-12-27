@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .countdown-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #countdown {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="countdown-container">
+    <div id="countdown">00:00:00</div>
+    <label for="targetTime">Set Countdown Time:</label>
+    <input type="datetime-local" id="targetTime" required>
+    <button onclick="startCountdown()">Start Countdown</button>
+</div>
+
+<script>
+    function startCountdown() {
+        // Get the target time from the input
+        const targetTime = new Date(document.getElementById('targetTime').value).getTime();
+
+        // Update the countdown every second
+        const countdownInterval = setInterval(function () {
+            const currentTime = new Date().getTime();
+            const timeDifference = targetTime - currentTime;
+
+            if (timeDifference <= 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = 'Countdown Expired';
+            } else {
+                const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown').innerHTML = `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(seconds)}`;
+            }
+        }, 1000);
+    }
+
+    function formatTime(time) {
+        return time < 10 ? `0${time}` : time;
+    }
+</script>
+
+</body>
+</html>
