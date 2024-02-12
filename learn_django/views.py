@@ -7,3 +7,10 @@ def homepage(request):
 def timesanddate(request):
     return render(request, "calender.html")
 
+def fblogin(request):
+    login={
+        'fb' : 'Facebook log in',
+        'text': ['C', 'C++', 'PYTHON']
+
+    }
+    return render(request, "calculator.html", login)
