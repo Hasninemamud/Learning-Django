@@ -1,16 +1,14 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-def homepage(request):
+def index(request):
     return render(request, "index.html")
 
-def timesanddate(request):
-    return render(request, "calender.html")
+def about(request):
+    return render(request, "about.html")
 
-def fblogin(request):
-    login={
-        'fb' : 'Facebook log in',
-        'text': ['C', 'C++', 'PYTHON']
+def contact(request):
+    return render(request, "contact.html")
 
-    }
-    return render(request, "calculator.html", login)
+def service(request):
+    return render(request, "service.html")

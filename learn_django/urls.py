@@ -20,8 +20,8 @@ from learn_django import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.fblogin),
-    
-    path('time&date/', views.timesanddate),
-    
+    path('', views.index),
+    path('about/', views.about),
+    path('service/', views.service),
+    path('contact/', views.contact),
 ]
