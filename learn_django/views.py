@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponsePermanentRedirect
 from django.shortcuts import render
 
 def index(request):
@@ -14,12 +14,18 @@ def service(request):
     return render(request, "service.html")
 
 def userfrom(request):
+    finalans=0
+
     try:
-        # n1=request.GET['num1']
-        # n2=request.GET['num2']
-        n1=request.GET.get('num1')
-        n2=request.GET.get('num2')
-        print(n1+n2)
+       
+         if request.method=="POST":
+            n1=int(request.POST.get('num1'))
+            n2=int(request.POST.get('num2'))
+            finalans=n1+n2
+
+            url="/about/?output={}".format(finalans)
+
+            return HttpResponsePermanentRedirect(url)
     except:
         pass
-    return render(request, "userfrom.html")
+    return render(request, "userfrom.html",{'output':finalans})
