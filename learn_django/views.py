@@ -12,3 +12,14 @@ def contact(request):
 
 def service(request):
     return render(request, "service.html")
+
+def userfrom(request):
+    try:
+        # n1=request.GET['num1']
+        # n2=request.GET['num2']
+        n1=request.GET.get('num1')
+        n2=request.GET.get('num2')
+        print(n1+n2)
+    except:
+        pass
+    return render(request, "userfrom.html")

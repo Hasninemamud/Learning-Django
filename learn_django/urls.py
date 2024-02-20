@@ -20,8 +20,9 @@ from learn_django import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
-    path('about/', views.about),
-    path('service/', views.service),
-    path('contact/', views.contact),
+    path('', views.index, name='index'),
+    path('about/', views.about, name='about'),
+    path('service/', views.service, name='service'),
+    path('contact/', views.contact, name='contact'),
+    path('from/', views.userfrom, name='userfrom'),
 ]

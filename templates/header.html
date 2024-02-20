@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="/js/login.js">
     <title>Your Website</title>
 </head>
-<body style="background-image: url(/static/img/panda.jpeg)">
+<body >
     <header>
         <h1>Your Website</h1>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/service">Service</a></li>
+                {% comment %} {{request.path}} {% endcomment %}
+                <li class="active"><a href="{% url "index" %}">Home</a></li>
+                <li><a href="{% url "about" %}">About</a></li>
+                <li><a href="{% url "contact" %}">Contact</a></li>
+                <li><a href="{% url "service" %}">Service</a></li>
             </ul>
         </nav>
     </header>
